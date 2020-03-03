@@ -1,20 +1,23 @@
+
+"must settings for plugins============================================
 set nocompatible
 filetype off
 syntax enable
 
-"try solving problem=================================================
 
 
+"vim-plug settings====================================================
 
-"vimplug settings=====================================================
 
-
-call plug#begin('$HOME/vimfiles/plugin')
+call plug#begin('$HOME/vimfiles/plugin')"for vim8.2 on windows10
 
 "Plug 'arzg/vim-colors-xcode'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'tomasr/molokai'
 
+"Plug 'davidhalter/jedi-vim'
+"jedi is for my UMPC that doesnt support AVX for kite
+"but jedi-vim failed to initialize Python
 
 call plug#end()
 filetype plugin indent on
@@ -42,14 +45,17 @@ source $VIMRUNTIME/menu.vim
 language messages zh_TW.utf-8
 
 
-
 "editing to code in python ===========================================
 set t_Co=256
 set nu
+set backspace=2
 
 imap <F6> <Esc>:w <CR>:!python %<CR>
-
-
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
 
 au BufNewFile,BufRead *.py
 \ set tabstop=4 |
@@ -62,7 +68,7 @@ au BufNewFile,BufRead *.py
 
 set nobackup       " no backup files
 set noswapfile     " no swap files
-set nowritebackup  " only in case you don't want a backup file while editing
+set nowritebackup  " in case you don't want a backup file while editing
 set noundofile     " no undo files
 
 let &backupdir = expand('$HOME/vimfiles/backup//')
