@@ -1,0 +1,69 @@
+set nocompatible
+filetype off
+syntax enable
+
+"try solving problem=================================================
+
+
+
+"vimplug settings=====================================================
+
+
+call plug#begin('$HOME/vimfiles/plugin')
+
+"Plug 'arzg/vim-colors-xcode'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'tomasr/molokai'
+
+
+call plug#end()
+filetype plugin indent on
+
+
+"settings for kite===================================================
+"for kite
+"set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line
+"for kite end
+
+
+"solving cant edit chinese problem===================================
+set encoding=utf-8
+set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
+if has("win32")
+ set fileencoding=chinese
+else
+ set fileencoding=utf-8
+endif
+
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+language messages zh_TW.utf-8
+
+
+
+"editing to code in python ===========================================
+set t_Co=256
+set nu
+
+imap <F6> <Esc>:w <CR>:!python %<CR>
+
+
+
+au BufNewFile,BufRead *.py
+\ set tabstop=4 |
+\ set softtabstop=4 |
+\ set shiftwidth=4 |
+\ set textwidth=79 |
+\ set expandtab |
+\ set autoindent |
+\ set fileformat=unix
+
+set nobackup       " no backup files
+set noswapfile     " no swap files
+set nowritebackup  " only in case you don't want a backup file while editing
+set noundofile     " no undo files
+
+let &backupdir = expand('$HOME/vimfiles/backup//')
+if !isdirectory(&backupdir) | call mkdir(&backupdir, "p") | endif
