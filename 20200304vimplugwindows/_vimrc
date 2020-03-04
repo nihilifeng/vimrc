@@ -45,6 +45,19 @@ source $VIMRUNTIME/menu.vim
 language messages zh_TW.utf-8
 
 
+"for my windows PC====================================================
+set lines=35 columns=118
+winpos 320 0
+set guifont=Consolas:h18 " for Windows
+
+"for my windows UMPC==================================================
+"set guifont=monospace\ 14 
+
+
+"for Linux============================================================
+"set guifont-Monacco:h16
+
+
 "editing to code in python ===========================================
 set t_Co=256
 set nu
